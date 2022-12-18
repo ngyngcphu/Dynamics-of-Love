@@ -1,0 +1,266 @@
+\section{Bài tập 1}
+\subsection{Phương trình vi phân bậc 1 dạng tổng quát}
+Giả sử $F = F(t,x,y)$ là một hàm đã được định nghĩa với 3 biến và ta cần tìm hàm $u(t)$ sao cho:
+\begin{align}
+     F(t,u'(t),u(t)) = 0
+\end{align}
+trên một miền thuộc trục $t$. Dạng tổng quát của phương trình này là:
+\begin{align}
+    \frac{du}{dt} = f(t, u)
+\end{align}
+Giả sử hàm $f$ trong phương trình (2) không phụ thuộc vào $u$, nghiệm của phương trình trên là:
+\begin{align}
+    u(t) = \int\limits_{}^{t}{f(t)dt} + C
+\end{align}
+với $C$ là một hằng số tùy ý.
+\subsection{Bài toán liên quan đến điều kiện ban đầu (Initial value problem - IVP)}
+Nghiệm giải ra trong ví dụ (3) không chỉ bao gồm 1 mà gồm một họ các nghiệm, mỗi nghiệm ứng với một giá trị của hằng số $C$. Ta có thể xác định được nghiệm duy nhất của hệ phương trình nếu có thể xác định được cụ thể giá trị của hằng số $C$. Một cách để thực hiện việc này là ràng buộc hàm $u(t)$ sao cho $u(t)$ không chỉ thỏa điều kiện của phương trình vi phân mà còn phải thỏa điều kiện ban đầu $u_0$ tại một giá trị $t_0$ cho trước. Ta định nghĩa \textbf{\textit{Bài toán điều kiện ban đầu như sau:}}
+\begin{align}
+    \begin{cases}
+        \frac{du}{dt} = f(t, u)\\
+        u(t_0) = u_0
+    \end{cases}
+\end{align}
+Ở đây hàm $f$ và điều kiện ban đầu $u_0$, $t_0$ được cho trước.
+\subsection{Hệ phương trình vi phân bậc nhất}
+\subsubsection{Định nghĩa}
+\textit{Hệ phương trình vi phân bậc nhất có dạng:}
+\begin{align}
+    \begin{cases}
+        u'_1 = f(u_1,u_2,...,u_n,t)\\
+        u'_2 = f(u_1,x_2,...,u_n,t)\\
+        \vdots\\
+        u'_n = f(u_1,u_2,...,u_n,t)
+    \end{cases}
+\end{align}
+với $t$ có giá trị trong một khoảng cho trước. Hệ phương trình vi phân bậc nhất với bài toán điều kiện ban đầu có dạng tương tự (5) và bổ sung thêm các điều kiện ban đầu $u_1(t_0) = c_1$, $u_2(t_0) = c_2$,..., $u_n(t_0) = c_n$.\\
+Nghiệm của hệ phương trình vi phân bậc nhất là tập các hàm $u_1 = f_1(t)$, $u_2 = f_2(t)$,..., $u_n = f_n(t)$ thỏa tất cả các phương trình của hệ. Nghiệm của hệ phương trình vi phân bậc nhất với bài toán điều kiện ban đầu ngoài ra còn phải thỏa thêm các điều kiện ban đầu.
+\subsubsection{Hệ tuyến tính}
+\textit{Hệ phương trình vi phân tuyến tính bậc nhất} là hệ phương trình vi phân bậc nhất dưới dạng:
+\begin{align}
+    \begin{cases}
+        u'_1 = a_{11}(t)u_1(t) + a_{12}(t)u_2(t) + ... + a_{1n}(t)u_n(t) + b_1(t)\\
+        u'_2 = a_{21}(t)u_1(t) + a_{22}(t)u_2(t) + ... + a_{2n}(t)u_n(t) + b_2(t)\\
+        \vdots\\
+        u'_n = a_{n1}(t)u_1(t) + a_{n2}(t)u_2(t) + ... + a_{nn}(t)u_n(t) + b_n(t)
+    \end{cases}
+\end{align}
+Trong đó $a_{ij}(t)$, $b_{i}(t)$ là các hàm xác định với $i\in [1,n]$ và $j\in [1,n]$; $u_i(t)$ là hàm cần tìm với $i\in [1,n]$.
+\subsubsection{Dạng ma trận của hệ tuyến tính}
+\textit{Ma trận hệ số của hệ (6) gồm:}
+\begin{center}
+    $A$ = 
+    $\begin{pmatrix}
+        a_{11}(t) & a_{12}(t) & \dots & a_{1n}(t)\\
+        a_{21}(t) & a_{22}(t) & \dots & a_{2n}(t)\\
+        \vdots    & \vdots    & \ddots & \vdots\\
+        a_{n1}(t) & a_{n2}(t) & \dots & a_{nn}(t)
+    \end{pmatrix}$
+    ,
+    $\Vec{b}(t)$ = 
+    $\begin{pmatrix}
+        b_1(t)\\
+        b_2(t)\\
+        \vdots\\
+        b_n(t)
+    \end{pmatrix}$
+    ,
+    $\Vec{u}(t)$ = 
+    $\begin{pmatrix}
+        u_1(t)\\
+        u_2(t)\\
+        \vdots\\
+        u_n(t)
+    \end{pmatrix}$
+    ,
+    $\Vec{u'}$ = 
+    $\begin{pmatrix}
+        u'_1\\
+        u'_2\\
+        \vdots\\
+        u'_n
+    \end{pmatrix}$
+\end{center}
+Khi đó hệ tuyến tính có thể được viết dưới dạng ma trận như sau:
+\begin{align}
+    \Vec{u'} = A(t)\Vec{u}(t) + \Vec{b(t)}
+\end{align}
+Hệ (7) được gọi là thuần nhất nếu $\Vec{b}(t) = \Vec{0}$.\\
+Bài toán điều kiện ban đầu cho hệ (11) là tìm vector hàm $\Vec{u}(t)$ thỏa hệ trên một khoảng cho trước và các điều kiện ban đầu $\Vec{u}(t_0) = (u_1(t_0), u_2(t_0),...,u_n(t_0))^T$.
+\subsubsection{Hệ phương trình vi phân bậc một thuần nhất với hệ số hằng}
+Ta xét hệ
+\begin{align}
+    \Vec{u'} = A\Vec{u}
+\end{align}
+với $t$ thuộc miền $I$, $A$ là một ma trận $n\times n$ với các phần tử là hằng số.\\
+Nếu $\lambda$ là trị riêng của $A$ với vector riêng $\Vec{v}$, đặt $\Vec{u} = e^{\lambda t}\Vec{v}$. Khi đó $\Vec{u'} = e^{\lambda t}\lambda\Vec{v}$. Ta có:
+\begin{align}
+    A\Vec{u} = e^{\lambda t}A\Vec{v} = e^{\lambda t}\lambda\Vec{v} = \Vec{u'}
+\end{align}
+Vậy $e^{\lambda t}\Vec{v}$ là một nghiệm của (9).\\
+Giả sử ma trận $A$ có $n$ vector riêng độc lập tuyến tính $\Vec{v_1}, \Vec{v_2},...\Vec{v_n}$ và $\lambda_k$ là trị riêng tương ứng với vector riêng $\Vec{v_k}$. Khi đó nghiệm tổng quát là:
+\begin{align}
+    \Vec{u} = c_1e^{\lambda_1 t}\Vec{v_1} + c_2e^{\lambda_2 t}\Vec{v_2} + ... + c_ne^{\lambda_n t}\Vec{v_n}
+\end{align}
+với $c_1, c_2,..., c_n$ là các hằng số tùy ý.\\
+Khi đó, tập nghiệm cơ bản là $e^{\lambda_1 t}\Vec{v_1}$, $e^{\lambda_2 t}\Vec{v_2}$,...,$e^{\lambda_n t}\Vec{v_n}$. Ta gọi $U(t)$ là một \textit{ma trận cơ bản} có các cột tương ứng với các phần tử trong tập nghiệm cơ bản.\\
+Vậy nghiệm tổng quát của phương trình (8) là $u(t) = U(t)\Vec{c}$, với $\Vec{c} = (c_1,c_2,...,c_n)^T$ và nghiệm thỏa điều kiện ban đầu $\Vec{u}(t_0) = \Vec{u_0}$ là $u(t) = U(t)U(t_0)^{-1}\Vec{u_0}$.
+\subsection{Hệ động lực}
+\subsubsection{Định nghĩa}
+Các mô hình toán học của các hệ thống khoa học thường cho ra các phương trình vi phân mà ở đó thời gian là biến độc lập. Các hệ này xuất hiện trong các lĩnh vực như thiên văn học, sinh học, hóa học, kinh tế học, kỹ thuật, vật lý học. Hệ các phương trình vi phân:
+\begin{align}
+    \Vec{u'} = f(u)
+\end{align}
+tạo ra một \textbf{\textit{hệ động lực học}}. Trong đó cần chú ý những vấn đề sau:
+\begin{itemize}
+    \item Các hành vi liên quan đến tính chất của hệ được thể hiện trên một khoảng thời gian dài. Hay nói cách khác, cần xem xét đến tính động lực khi biến thời gian $t\to+\infty$.
+    \item Sự thay đổi của nghiệm thu được từ hệ động lực khi các dữ liệu đầu vào thay đổi. Xét hệ (11) cho tất cả các phương trình vi phân với giá trị ban đầu $u(t_0) = u_0$, nghiệm không chỉ là một hàm theo biến $t$ mà còn là một hàm theo biến $u_0: u = \phi(t, u_0)$
+    \item Họ các phương trình vi phân. Các phương trình của một họ thường được phân biệt bởi giá trị của một thông số, ví dụ như $\lambda$. Vế phải của hệ phương trình (11) được viết lại thành $f(u, \lambda)$. Nghiệm của hệ giờ đây phụ thuộc thêm vào $\lambda$.
+\end{itemize}
+Những điều cần lưu ý trên thể hiện các vấn đề trong quá trình ứng dụng hệ động lực học, tại đây phụ thuộc vào các tham số và cần phải được xem xét trên nhiều điều kiện ban đầu khác nhau.\\
+Như vậy, hệ động lực là một hệ thống thay đổi theo thời gian dựa vào một tập các ràng buộc nhất định để xác định cách chuyển trạng thái trong hệ thống. Nói cách khác, hệ động lực là một \textit{không gian trạng thái (state space)} cùng với cách biến đổi của không gian đó.\\
+Một hệ động lực gồm 2 phần:
+\begin{itemize}
+    \item \textit{Vector trạng thái (state vector)} mô tả chính xác các trạng thái của hệ thống. 
+    \item \textit{Hàm trạng thái (state function)} mô tả cách chuyển trạng thái .
+\end{itemize}
+Vector trạng thái có thể được mô tả bởi:
+\begin{align*}
+    \Vec{u}(t)=[u_1(t), u_2(t),...u_n(t)]
+\end{align*}
+Hàm trạng thái có thể được mô tả bởi:
+\begin{align*}
+    f_1(u_1,u_2,...u_n), f_2(u_1,u_2,...u_n),..., f_n(u_1,u_2,...u_n)
+\end{align*}
+\subsubsection{Phân loại}
+\begin{enumerate}
+    \item \textbf{\textit{Tự động và bất tự động}}\\
+    Hệ các phương trình vi phân như (11) được gọi là một hệ \textbf{\textit{tự động (autonomous)}} vì vế phải của hệ không phụ thuộc vào biến thời gian.\\
+    Ngoài ra có một dạng hệ tổng quát hơn, \textbf{\textit{bất tự động (non-autonomous)}}:
+    \begin{align}
+        x' = f(t,x)
+    \end{align}
+    Từ hệ phương trình vi phân (12) gồm $n$ phương trình này có thể đưa về một hệ tự động gồm $n+1$ phương trình bằng cách thêm vào hệ phương trình $x'_{n+1} = 1$ và thay $t=x_{n+1}$ ở $n$ phương trình còn lại.
+    \item \textbf{\textit{Rời rạc và liên tục}}\\
+    Hệ động lực \textbf{\textit{liên tục}} là một hệ thay đổi trạng thái trong không gian trạng thái của hệ một cách liên tục. Hệ động lực \textbf{\textit{rời rạc}} là một hệ thay đổi trạng thái trong không gian trạng thái của hệ một cách rời rạc.
+\end{enumerate}
+\subsection{Mô hình hệ động lực trong Bài tập lớn}
+Trong bài tập lớn này, chúng ta đề cập đến một mô hình autonomous đơn giản có hệ số hằng và điều kiện ban đầu. Mô hình này như sau:
+\begin{align}
+    \begin{cases}
+        R'=aR+bJ\\
+        J'=cR+dJ\\
+        R(0)=R_0\\
+        J(0)=J_0
+    \end{cases}
+\end{align}
+Trong đó:\\
+$R:\mathbb{R^+}\cup\{0\}\to \mathbb{R}$ (\textit{hàm đại diện tình yêu của Romeo dành cho Juliet)}.\\
+$J:\mathbb{R^+}\cup\{0\}\to \mathbb{R}$(\textit{hàm đại diện tình yêu của Juliet dành cho Romeo)}.\\
+$a$, $b$, $c$, $d$ $\in\mathbb{R}$: mô tả sự tương tác tình yêu của một người đến người còn lại.\\
+$R_0$, $J_0$: lần lượt là tình yêu của Romeo dành cho Juliet và của Juliet dành cho Romeo tại thời điểm ban đầu.\\
+Hệ phương trình vi phân trên có nghiệm duy nhất khi và chỉ khi hệ có điều kiện ban đầu. Ta sẽ giải cụ thể sau đây.
+\subsection{Giải hệ phương trình}
+\begin{align*}
+    \begin{cases}
+        R'=aR+bJ\\
+        J'=cR+dJ\\
+        R(0)=R_0\\
+        J(0)=J_0
+    \end{cases}
+\end{align*}
+Ta có ma trận hệ số $A=\begin{pmatrix}
+                            a & b\\
+                            c & d
+                        \end{pmatrix}$\\
+\begin{align}
+    det(A-\lambda{I})=\begin{pmatrix}
+                        a-\lambda & b\\
+                        c         & d-\lambda
+                    \end{pmatrix}
+                  = (a-\lambda)(d-\lambda) - bc = \lambda^2 - (a + d)\lambda + ad - bc = 0
+\end{align}
+Ta có $\Delta = (a + d)^2-4(ad - bc)$. Ta xét 3 trường hợp:
+\begin{itemize}
+    \item Trường hợp 1: $\Delta>0$, phương trình có hai nghiệm thực phân biệt $\lambda_1<\lambda_2$. Khi đó, nghiệm của hệ là:
+    \begin{align*}
+        \begin{cases}
+             R(t)=e^{\lambda_1t}\frac{R_0(\lambda_2-a)-J_0b}{\lambda_2-\lambda_1}-e^{\lambda_2t}\frac{R_0(\lambda_1-a)-J_0b}{\lambda_2-\lambda_1}\\
+              J(t)=e^{\lambda_1t}\frac{[R_0(\lambda_2-a)-J_0b](\lambda_1-a)}{b(\lambda_2-\lambda_1)}-e^{\lambda_2t}\frac{[R_0(\lambda_1-a)-J_0b] (\lambda_2-a)}{b(\lambda_2-\lambda_1)}
+        \end{cases}
+    \end{align*}
+    \item Trường hợp 2: $\Delta<0$, phương trình có hai nghiệm phức $\lambda_{1,2}=\alpha \pm \beta i$. Khi đó, nghiệm của hệ là:
+    \begin{align*}
+        \begin{cases}
+            R(t)=e^{\alpha t}\bigg( R_0\cos {\beta t} + \frac{J_0b-(\alpha-a)R_0}{\beta}\sin{\beta t}\bigg)\\
+            J(t)=e^{\alpha t}\bigg( J_0\cos {\beta t} + \frac{J_0b(\alpha-a)-(\alpha-a)^2 R_0-\beta^2R_0}{b\beta}\sin{\beta t}\bigg)
+        \end{cases}
+    \end{align*}
+    \item Trường hợp 3: $\Delta=0$, phương trình có nghiệm kép $\lambda_1=\lambda_2=\lambda$. Khi đó, nghiệm của hệ là:
+    \begin{align*}
+        \begin{cases}
+            R(t)=e^{\lambda t}\big((J_0b-(\lambda-a)R_0)t+R_0\big)\\
+            J(t)=e^{\lambda t}\bigg(J_0+\big(J_0(\lambda-a)-\frac{(\lambda-a)^2R_0}{b}\big)t\bigg)
+        \end{cases}
+    \end{align*}
+\end{itemize}
+\subsection{Bảng phân loại phase portrait}
+\textbf{\textit{Phase portrait}} của hệ (13) được xây dựng bằng cách vẽ đồ thị \textbf{\textit{vector field}} $\Vec{x'}=(R',J')^T=(f(R,J),g(R,J))^T$ đối với các biến độc lập $R$, $J$ trong $RJ-plane$. Một \textbf{\textit{trajectory}} trong vector field đại diện cho đồ thị của một bài toán có điều kiện ban đầu xác định. Việc xây dựng phase portrait cho phép chúng ta tìm tất cả các đồ thị khác nhau của một hệ động lực với các điều kiện ban đầu khác nhau.\\
+Điểm cố định của hệ (13) được xác định như sau:
+\begin{align*}
+    \begin{cases}
+        R'=0\\
+        J'=0
+    \end{cases}
+\end{align*}
+Việc phân loại các điểm cố định này sẽ cho ta các phase portrait tương ứng. Ta sẽ căn cứ vào 2 thông số $\det(A)=ad-bc$ và $trace(A)=a+d$ ở phương trình trị riêng (14).
+\begin{itemize}
+    \item Trường hợp 1: $\det(A)<0$\\
+    Vì $\det(A)=\lambda_1\lambda_2 < 0$ nên phương trình trị riêng có 2 nghiệm thực phân biệt $\lambda_1, \lambda_2$ trái dấu và điểm cố định là duy nhất. Điểm cố định là điểm yên ngựa \textbf{\textit{(Saddle node)}}, không ổn định \textbf{\textit{(Unstable)}}.
+    \item Trường hợp 2: $\det(A)=0$\\
+    Ở trường hợp này, phương trình trị riêng có 2 nghiệm thực $\lambda_1, \lambda_2$ và điểm cố định không là duy nhất mà tạo thành 1 đường thẳng (line) hay toàn bộ mặt phẳng (plane). Cụ thể gồm 3 trường hợp sau:
+    \begin{itemize}
+        \item Nếu $trace(A)<0$: \textbf{\textit{Line of stable fixed points}}.
+        \item Nếu $trace(A)=0$: \textbf{\textit{Plane of fixed points}}.
+        \item Nếu $trace(A)>0$: \textbf{\textit{Line of unstable fixed points}}.
+    \end{itemize}
+    \item Trường hợp 3: $\det(A)>0$\\
+    Ở trường hợp này, điểm cố định là duy nhất. Ta xét các trường hợp con:
+    \begin{itemize}
+        \item Nếu $trace(A)<-\sqrt{4\det(A)}$\\
+        Phương trình trị riêng có 2 nghiệm thực phân biệt và cùng âm $\lambda_1<0, \lambda_2<0$. Điểm cố định là \textbf{\textit{Stable node}} và có tính chất hút (attracting sink) .
+        \item Nếu $trace(A)=-\sqrt{4\det(A)}$\\
+        Phương trình trị riêng có 2 nghiệm thực bằng nhau $\lambda_1=\lambda_2<0$, tại đây ta lại xét 2 trường hợp nhỏ hơn:
+        \begin{itemize}
+            \item Nếu tồn tại một vector riêng được xác định duy nhất thì điểm cố định là \textbf{\textit{Stable degenerate node}}.
+            \item Nếu không tồn tại một vector riêng được xác định duy nhất thì điểm cố định là \textbf{\textit{Stable start}}.
+        \end{itemize}
+        \item Nếu $-\sqrt{4\det(A)}<trace(A)<0$\\
+        Phương trình trị riêng có 2 nghiệm phức liên hợp $\lambda_{1,2}=\alpha \pm \beta i$ và phần thực $\alpha<0$. Điểm cố định là \textbf{\textit{Stable spiral}} và có tính chất hút (attracting sink).
+        \item Nếu $trace(A)=0$\\
+        Phương trình trị riêng có 2 nghiệm thuần ảo $\lambda_{1,2}=\pm \beta i$. Điểm cố định là \textbf{\textit{Center}}.
+        \item Nếu $0<trace(A)<\sqrt{4\det(A)}$\\
+        Phương trình trị riêng có 2 nghiệm phức liên hợp $\lambda_{1,2}=\alpha \pm \beta i$ và phần thực $\alpha>0$. Điểm cố định là \textbf{\textit{Unstable spiral}} và có tính chất đẩy (repelling source).
+        \item Nếu $trace(A)=\sqrt{4\det(A)}$\\
+         Phương trình trị riêng có 2 nghiệm thực bằng nhau $\lambda_1=\lambda_2>0$, tại đây ta lại xét 2 trường hợp nhỏ hơn:
+         \begin{itemize}
+            \item Nếu tồn tại một vector riêng được xác định duy nhất thì điểm cố định là \textbf{\textit{Unstable degenerate node}}.
+            \item Nếu không tồn tại một vector riêng được xác định duy nhất thì điểm cố định là \textbf{\textit{Unstable start}}.
+        \end{itemize}
+        \item Nếu $\sqrt{4\det(A)}<trace(A)$\\
+        Phương trình trị riêng có 2 nghiệm thực phân biệt và cùng dương $\lambda_1>0, \lambda_2>0$. Điểm cố định là \textbf{\textit{Unstable node}} và có tính chất đẩy (repelling source).
+    \end{itemize}
+\end{itemize}
+Sau khi phân loại các điểm cố định, ta tổng hợp lại thành một bảng phân loại phase portarit tương ứng như sau:
+\begin{align*}
+    \begin{tabular}{|c|c|c|c|c|}
+       \hline 
+       Re $\lambda_1$  & Re $\lambda_2$ & |Im $\lambda_1$| &| Im $\lambda_2$| & Type \\ \hline
+       + & - & 0 & 0 & Saddle \\ \hline
+       - & - & 0 & 0 & Stable \\ \hline
+       + & + & 0 & 0 & Unstable \\ \hline
+       - & - & + & + & Stable spiral \\ \hline
+       0 & 0 & + & + & Center \\ \hline
+       + & + & + & + & Unstable spiral \\ \hline
+    \end{tabular}    
+\end{align*}

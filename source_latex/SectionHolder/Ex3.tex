@@ -1,0 +1,1087 @@
+\section{Bài tập 3}
+\subsection{Hệ phương trình vi phân tuyến tính không thuần nhất với hệ số hằng (Nonhomogeneous Linear System)}
+Khi tình yêu giữa Romeo và Juliet phụ thuộc vào điều kiện bên ngoài (như gia đình, xã hội,..) ta sẽ có hệ phương trình tổng quát như sau:
+\begin{align}
+    \begin{cases}
+        R'=aR+bJ+f(t)\\
+        J'=cR+dJ+g(t)\\
+        R(0)=R_0, J(0)=J_0
+    \end{cases}
+\end{align}
+Trong đó:\\
+$R:\mathbb{R^+}\cup\{0\}\to \mathbb{R}$ (\textit{hàm đại diện tình yêu của Romeo dành cho Juliet)}.\\
+$J:\mathbb{R^+}\cup\{0\}\to \mathbb{R}$(\textit{hàm đại diện tình yêu của Juliet dành cho Romeo)}.\\
+$a$, $b$, $c$, $d$ $\in\mathbb{R}$: mô tả sự tương tác tình yêu của một người đến người còn lại.\\
+$R_0$, $J_0$: lần lượt là tình yêu của Romeo dành cho Juliet và của Juliet dành cho Romeo tại thời điểm ban đầu.\\
+$f(t)$, $g(t)$ là hai hàm theo biến thời gian $t$, lần lượt là điều kiện bên ngoài ảnh hưởng tới tình yêu của Romeo và Juliet.\\\\
+Hệ (15) có dạng hệ phương trình vi phân tuyến tính không thuần nhất. Ta biểu diễn lại hệ (15) dưới dạng tổng quát:\\
+\begin{align}
+    \begin{cases}
+        x'=Ax+B(t)\\
+        x(0)=x_0
+    \end{cases}
+\end{align}
+Để tìm nghiệm tổng quát cho hệ (15), ta sẽ tìm cách giải và nghiệm tổng quát của hệ (16).\\
+\subsubsection{Hàm mũ ma trận (Matrix Exponential)}
+\subsubsubsection{Định nghĩa}
+Cho $A$ là một ma trận $n \times n$ với hệ số không đổi. Hàm mũ ma trận của $A$ (kí hiệu là $e^{At}$) được biểu diễn như sau:\\
+$$e^{At}=\sum_{k=0}^{\infty}A^{k}\frac{t^{k}}{k!}=I_n+At+\frac{1}{2!}A^{2}t^{2}+\frac{1}{3!}A^{3}t^{3}+...$$
+\subsubsubsection{Áp dụng hàm mũ ma trận trong tìm nghiệm hệ phương trình vi phân trình vi phân tuyến tính thuần nhất}
+Cho hệ phương trình vi phân tuyến tính thuần nhất:
+\begin{align}
+    \begin{cases}
+        x'=Ax\\
+        x(0)=x_0
+    \end{cases}
+\end{align}
+Giả sử $e^{At}$ là hàm mũ ma trận của $A$, ta được nghiệm tổng quát của hệ (17):
+\begin{align}
+    x=e^{At}x_0
+\end{align}
+\textbf{Thật vậy, ta có thể chứng minh công thức trên như sau:}\\
+Dựa và định nghĩa ta có:\\
+$$e^{At}=I_n+At+\frac{1}{2!}A^{2}t^{2}+\frac{1}{3!}A^{3}t^{3}+...$$
+$$\Rightarrow\frac{d}{dt}(e^{At})=A+A^{2}t+\frac{1}{2}A^{3}t^{2}+...$$
+$$\Rightarrow\frac{d}{dt}(e^{At})=A(I_n+At+\frac{1}{2}A^{2}t^{2}+...)$$
+$$\Rightarrow\frac{d}{dt}(e^{At})=Ae^{At}$$
+Điều này cho thấy $e^{At}$ là nghiệm của hệ phương trình vi phân tuyến tính $x'=Ax$. Nghiệm $x$ lúc này được biểu diễn dưới dạng $x=e^{At}.c$ (với c là hằng số). 
+Kết hợp với điều kiện ban đầu $x(0)=x_0$, ta được nghiệm tổng quát của hệ (17):
+\begin{align*}
+    x=e^{At}x_0
+\end{align*}
+\subsubsubsection{Phương pháp tìm hàm mũ ma trận}
+Như ta chứng minh ở trên, nếu có hàm mũ của ma trận A thì ta sẽ tìm được nghiệm của hệ phương trình vi phân tuyến tính thuần nhất. Nhưng làm cách nào để tìm được hàm mũ của một ma trận? Sau đây sẽ là một số phương pháp được sử dụng để tìm hàm mũ ma trận.
+\subsubsubsection*{Phương pháp sử dụng định nghĩa}
+Với phương pháp này, ta chỉ áp dụng với các ma trận khi lũy thừa có điểm dừng hoặc có thể đưa về dạng tổng quát.\\
+Ta xét các ví dụ sau:
+\subsubsubsection*{Ví dụ 1}
+Tìm hàm mũ của ma trận $A=
+\begin{bmatrix}
+0 & 1\\
+0 & 0
+\end{bmatrix}$\\
+\textbf{Cách giải}\\
+Ta tính lũy thừa liên tiếp của A:\\
+$$A=
+\begin{bmatrix}
+0 & 1\\
+0 & 0
+\end{bmatrix}$$
+$$A^{2}=A^{3}=...=
+\begin{bmatrix}
+0 & 0\\
+0 & 0
+\end{bmatrix}$$
+$$\Rightarrow e^{At}=I_n+At=
+\begin{bmatrix}
+1 & t\\
+0 & 1
+\end{bmatrix}$$
+\subsubsubsection*{Ví dụ 2}
+Tìm hàm mũ của ma trận $A=
+\begin{bmatrix}
+2 & 0\\
+0 & 3
+\end{bmatrix}$\\
+\textbf{Cách giải}\\
+Ta tính lũy thừa liên tiếp của A:\\
+$$A=
+\begin{bmatrix}
+2 & 0\\
+0 & 3
+\end{bmatrix}$$
+$$A^{2}=
+\begin{bmatrix}
+4 & 0\\
+0 & 9
+\end{bmatrix}$$
+$$\vdots\\$$
+$$A^{n}=
+\begin{bmatrix}
+2^{n} & 0\\
+0 & 3^{n}
+\end{bmatrix}$$
+$$\Rightarrow e^{At}=\sum_{k=0}^{\infty}\frac{t^{k}}{k!}\begin{bmatrix}
+2^{n} & 0\\
+0 & 3^{n}
+\end{bmatrix}$$
+\textbf{Nhận xét:}\\
+Nếu tính lũy thừa của A như trong hai ví dụ trên, ta sẽ rất khó khi tính những hàm mũ không có quy luật rõ ràng. Vì vậy ta sẽ tìm hiểu thêm những phương pháp tiếp theo.
+\subsubsubsection*{Phương pháp dùng đại số tuyến tính}
+Phương pháp này được áp dụng khi ma trận cần tìm hàm mũ là một ma trận chéo hóa được.\\
+Cho $A$ là một ma trận $n \times n$ với hệ số không đổi. Giả sử ma trận $A$ chéo hóa được với các vectơ riêng độc lập $v_1, v_2,...,v_n$ và các trị riêng tương ứng $\lambda_1,\lambda_2,...,\lambda_n$.\\
+Đặt:
+$$S=
+\begin{bmatrix}
+    v_1 & v_2 &.. &v_n
+\end{bmatrix}$$
+$$D=
+\begin{bmatrix}
+    \lambda_1 & 0 &... &0\\
+    0 & \lambda_2 &... &0\\
+    \vdots & \vdots&\vdots& \vdots\\
+    0 & 0 &.. &\lambda_n\\
+\end{bmatrix}$$
+$$\Rightarrow S^{-1}.A.S=D$$
+Khi đó:
+$$e^{Dt}=
+\begin{bmatrix}
+    e^{\lambda_1t} & 0 &... &0\\
+    0 & e^{\lambda_2t} &... &0\\
+    \vdots & \vdots&\vdots& \vdots\\
+    0 & 0 &.. &e^{\lambda_nt}\\
+\end{bmatrix}$$
+Ta lại có:
+$$e^{Dt}=\sum_{n=0}^{\infty}\frac{t^{n}(S^{-1}AS)^{n}}{n!}=\sum_{n=0}^{\infty}\frac{t^{n}S^{-1}A^{n}S}{n!}=S^{-1}\sum_{n=0}^{\infty}\frac{t^{n}A^{n}}{n!}S=S^{-1}e^{At}S$$
+Suy ra:
+$$e^{At}=Se^{Dt}S^{-1}$$
+Hay
+\begin{align}
+    e^{At}=S
+\begin{bmatrix}
+    e^{\lambda_1t} & 0 &... &0\\
+    0 & e^{\lambda_2t} &... &0\\
+    \vdots & \vdots&\vdots& \vdots\\
+    0 & 0 &.. &e^{\lambda_nt}\\
+\end{bmatrix}
+S^{-1}
+\end{align}
+\subsubsubsection*{Phương pháp Williamson}
+Phương pháp này được áp dụng khi ma trận cần tìm hàm mũ không chéo hóa được.\\\\
+Cho $A$ là một ma trận $n \times n$ với hệ số không đổi. Giả sử ${\lambda_1,\lambda_2,...,\lambda_n}$ là danh sách các trị riêng, với nhiều giá trị lặp lại theo bội số của chúng.\\
+Đặt:
+$$\begin{cases}
+        a_1=e^{\lambda_1t}\\
+        a_k=\displaystyle\int\limits_{0}^{t} \mathrm{e}^{\lambda_k(t-u)}a_{k-1}(u)\mathrm{d}u
+\end{cases}$$
+$$\begin{cases}
+        B_1=I\\
+        B_2=(A-\lambda_{k-1}I)B_{k-1}
+\end{cases}$$
+Với $k=2, 3,..., n$\\
+Khi đó, ta có hàm mũ ma trận:
+\begin{align}
+   e^{At}=a_1B_1+a_2B_2+...+a_nB_n
+\end{align}
+\subsubsection{Các tính chất về nghiệm hệ phương trình vi phân tuyến tính không thuần nhất với hệ số hằng}
+\textbf{Định lí 1:} Nếu $X^*(t)$ là nghiệm của hệ phương trình vi phân tuyến tính không thuần nhất với hệ số hằng, $X_1(t), X_2(t),...,X_n(t)$ là hệ nghiệm cơ bản của hệ phương trình vi phân tuyến tính thuần nhất với hệ số hằng tương ứng thì nghiệm tổng quát của hệ phương trình vi phân tuyến tính không thuần nhất với hệ số hằng có dạng:
+$$X=c_1X_1(t)+c_2X_2(t)+...+C_nX_n(t)+X^*(t)$$
+trong đó $c_1,c_2,...,c_n$ là các hằng số bất kì.\\\\
+\textbf{Định lí 2:} Nếu $X_1(t), X_2(t)$ là hai nghiệm tương ứng của các hệ phương trình
+$$x'=Ax+F_1(x); \hspace{1cm}x'=Ax+F_2(x)$$
+thì $X(t)=X_1(t)+X_2(t)$ là nghiệm của hệ phương trình
+$$x'=Ax+F_1(x)+F_2(x)$$
+\subsubsection{Nghiệm tổng quát của hệ phương trình vi phân tuyến tính không thuần nhất với hệ số hằng}
+Trở lại với hệ $(16)$:
+\begin{align*}
+    \begin{cases}
+        x'=Ax+B(t)\\
+        x(0)=x_0
+    \end{cases}
+\end{align*}
+Gọi $x_c$ là nghiệm của hệ phương trình thuần nhất:
+\begin{align*}
+    \begin{cases}
+        x'=Ax\\
+        x(0)=x_0
+    \end{cases}
+\end{align*}
+Gọi $x_p$ là nghiệm riêng của hệ $(16$).\\
+\textbf{Ta được nghiệm tổng quát của hệ $(16)$ có dạng như sau:}
+\begin{align*}
+    x=x_c+x_p
+\end{align*}
+Ta tiếp tục tìm dạng tổng quát của $x_c$ và $x_p$\\
+Dựa và công thức $(18)$ nghiệm $x_c$ có dạng:
+\begin{align*}
+    x_c=e^{At}x_0
+\end{align*}
+Suy ra, nghiệm $x_p$ có dạng:
+\begin{align*}
+    x_p=e^{At}U(t)
+\end{align*}
+Ta tiếp tục tìm dạng tổng quát của U(t).\\
+Thay $x_p$ vào hệ $(16)$ ta được:
+$$x_p'=Ax_p+B(t)$$
+$$\Rightarrow Ae^{At}U(t)+e^{At}U'(t)=Ae^{At}U(t)+B(t)$$
+$$\Rightarrow e^{At}U'(t)=B(t)$$
+$$U(t)=\displaystyle\int\limits_{0}^{t} \mathrm{e}^{-As}B(s)\mathrm{d}s$$
+\textbf{Suy ra, nghiệm của hệ $(16)$ có dạng tổng quát:}
+\begin{align}
+    x=e^{At}x_0+\displaystyle\int\limits_{0}^{t} \mathrm{e}^{A(t-s)}B(s)\mathrm{d}s
+\end{align}
+\subsubsubsection*{Từ công thức nghiệm $(21)$, ta suy ra hệ $(15)$ có nghiệm như sau:}
+\begin{align}
+\begin{bmatrix}
+    R\\
+    J
+\end{bmatrix}
+    =e^{At}x_0+\displaystyle\int\limits_{0}^{t} \mathrm{e}^{A(t-s)}
+\begin{bmatrix}
+    f(x)\\
+    g(x)
+\end{bmatrix}
+    \mathrm{d}s
+\end{align}
+\subsubsection{Ví dụ tìm nghiệm của hệ phương trình vi phân tuyến tính không thuần nhất với hệ số không đổi}
+\textbf{Ví dụ 1:} Tìm nghiệm của hệ phương trình sau:
+\begin{align*}
+    \begin{cases}
+        R'=-3R+4J+sin(t)\\
+        J'=-2R+3J+t\\
+        R(0)=0, J(0)=1
+    \end{cases}
+\end{align*}
+\centerline{\textbf{Giải}}
+Biểu diễn hệ phương trình trên lại dưới dạng:
+\begin{align*}
+    \begin{cases}
+        x'=
+        \begin{bmatrix}
+        -3 & 4\\
+        -2 & 3
+        \end{bmatrix}
+        x+
+        \begin{bmatrix}
+        sin(t)\\
+        t
+        \end{bmatrix}\\
+        x(0)=\begin{bmatrix}
+        0\\
+        1
+        \end{bmatrix}
+    \end{cases}
+\end{align*}
+\hspace{0.3cm}Với $x=
+\begin{bmatrix}
+    R\\
+    J
+\end{bmatrix}$\\
+Xét ma trận $A=
+\begin{bmatrix}
+    -3&4\\
+    -2&3
+\end{bmatrix}
+$\\
+Phương trình đặc trưng của A có 2 trị riêng thực phân biệt $\lambda_1=1; \lambda_2=-1$, vectơ riêng tương ứng là $v_1=
+\begin{bmatrix}
+    1\\
+    1
+\end{bmatrix};
+v_2=
+\begin{bmatrix}
+    2\\
+    1
+\end{bmatrix}
+$.
+Suy ra hàm mũ của A:\\
+\hspace*{4cm}$e^{At}=
+\begin{bmatrix}
+    1 &2\\
+    1 & 1
+\end{bmatrix}
+\begin{bmatrix}
+    e^t & 0\\
+    0 & e^{-t}
+\end{bmatrix}
+\begin{bmatrix}
+    1 &2\\
+    1 & 1
+\end{bmatrix}^{-1}
+$\\\\\\
+\hspace*{4.7cm}$=
+\begin{bmatrix}
+    -e^t+2e^{-t} & 2e^t-2e^{-t}\\
+    -e^t+e^{-t} & 2e^t-e^{-t}
+\end{bmatrix}
+$\\
+Gọi $x_c$ là nghiệm của hệ thuần nhất suy ra từ hệ ban đầu, $x_p$ là nghiệm riêng của hệ ban đầu.\\
+Suy ra:\\
+\begin{align*}
+x_c=e^{At}x_0=
+    \begin{bmatrix}
+    -e^t+2e^{-t} & 2e^t-2e^{-t}\\
+    -t & 2e^t-e^{-t}
+\end{bmatrix}
+\begin{bmatrix}
+    0\\
+    1
+\end{bmatrix}
+=\begin{bmatrix}
+    2e^t-2e^{-t}\\
+    2e^t-e^{-t}
+\end{bmatrix}
+\end{align*}
+\begin{align*}
+    x_p=\displaystyle\int\limits_{0}^{t} \mathrm{e}^{A(t-s)}.
+    \begin{bmatrix}
+    sin(s)\\
+    s
+\end{bmatrix}
+    \mathrm{d}s
+=\displaystyle\int\limits_{0}^{t}
+\begin{bmatrix}
+    -e^{t-s}+2e^{-(t-s)} & 2e^{t-s}-2e^{-(t-s)}\\
+    -e^{t-s}+e^{-(t-s)} & 2e^{t-s}-e^{-(t-s)}
+\end{bmatrix}
+\begin{bmatrix}
+    sin(s)\\
+    s
+\end{bmatrix}
+\mathrm{d}s
+\end{align*}
+\begin{align*}
+    =\begin{bmatrix}
+\displaystyle\int\limits_{0}^{t}((sin(s)(-e^{t-s}+2e^{-t+s}))+s(2e^{t-s}-2e^{-t+s}))\mathrm{d}s\\
+\displaystyle\int\limits_{0}^{t}((sin(s)(-e^{t-s}+e^{-t+s}))+s(2e^{t-s}-e^{-t+s}))\mathrm{d}s
+\end{bmatrix}
+\end{align*}
+\begin{align*}
+    =\begin{bmatrix}
+    -4t+\frac{3}{2}e^t-e^{-t}-\frac{1}{2}cos(t)+\frac{3}{2}sin(t) \\
+    -1-3t+\frac{3}{2}e^t-\frac{1}{2}e^{-t}+sin(t)
+\end{bmatrix}
+\end{align*}
+Suy ra nghiệm của hệ phương trình ban đầu:\\
+\begin{align*}
+    x=x_c+x_p
+=\begin{bmatrix}
+    \frac{7}{2}e^t-3e^{-t}+\frac{3}{2}sin(t)-\frac{1}{2}cos(t)-4t\\
+    \frac{7}{2}e^t-\frac{3}{2}e^{-t}+sin(t)-3t-1
+\end{bmatrix}
+\end{align*}
+Vậy hệ phương trình đã cho có nghiệm duy nhất:
+\begin{align*}
+    R= \frac{7}{2}e^t-3e^{-t}+\frac{3}{2}sin(t)-\frac{1}{2}cos(t)-4t\\
+    J= \frac{7}{2}e^t-\frac{3}{2}e^{-t}+sin(t)-3t-1
+\end{align*}
+\textbf{Ví dụ 2:} Tìm nghiệm của hệ phương trình sau:
+\begin{align*}
+    \begin{cases}
+        R'=3R-J+t\\
+        J'=R+J+t^2\\
+        R(0)=3, J(0)=4
+    \end{cases}
+\end{align*}
+\centerline{\textbf{Giải}}
+Biểu diễn hệ phương trình trên lại dưới dạng:
+\begin{align*}
+    \begin{cases}
+        x'=
+        \begin{bmatrix}
+        3 & -1\\
+        1 & 1
+        \end{bmatrix}
+        x+
+        \begin{bmatrix}
+        t\\
+        t^2
+        \end{bmatrix}\\
+        x(0)=\begin{bmatrix}
+        3\\
+        4
+        \end{bmatrix}
+    \end{cases}
+\end{align*}
+\hspace{0.3cm}Với $x=
+\begin{bmatrix}
+    R\\
+    J
+\end{bmatrix}$\\
+Xét ma trận $A=
+\begin{bmatrix}
+    3&-1\\
+    1&1
+\end{bmatrix}.
+$
+ Phương trình đặc trưng $det(A- \lambda I)=0$ có nghiệm bội $\lambda_1=\lambda_2=2$.\\
+Để tìm hàm mũ của ma trận A. Ta sẽ tính dãy $a_k$ và $B_k$ (với k=1,2):\\
+Dãy $a_k$:
+\begin{align*}
+    \begin{cases}
+        a_1=e^{2t}\\
+        a_2=\displaystyle\int\limits_{0}^{t} \mathrm{e}^{2(t-u)}*\mathrm{e}^{2u}\mathrm{d}u=e^{2t}\displaystyle\int\limits_{0}^{t}\mathrm{d}u=t.e^{2t}
+    \end{cases}
+\end{align*}
+Dãy $B_k$:
+\begin{align*}
+    \begin{cases}
+        B_1=I\\
+        B_2=(A-2I)I=A-2I=
+        \begin{bmatrix}
+            1 &-1\\
+            1 &-1
+        \end{bmatrix}
+    \end{cases}
+\end{align*}
+Suy ra hàm mũ của A:
+$$e^{At}=a_1.B_1+a_2.B_2=
+e^{2t}
+\begin{bmatrix}
+    1 &0\\
+    0&1
+\end{bmatrix}
++ t.e^{2t}.
+\begin{bmatrix}
+    1&-1\\
+    1&-1
+\end{bmatrix}
+$$
+$$=
+\begin{bmatrix}
+    e^{2t}+t.e^{2t}&-te^{2t}\\
+    te^{2t} & e^{2t}-te^{2t}
+\end{bmatrix}$$
+Suy ra nghiệm của hệ phương trình thuần nhất:
+$$x_c=e^{At}.x_0=
+\begin{bmatrix}
+    -t.e^{2t}+3e^{2t}\\
+    -te^{2t}+4e^{2t}
+\end{bmatrix}
+$$
+Nghiệm riêng của hệ phương trình đã cho:
+$$
+    x_p=\displaystyle\int\limits_{0}^{t} \mathrm{e}^{A(t-s)}.
+    \begin{bmatrix}
+    s\\
+    s^2
+\end{bmatrix}
+    \mathrm{d}s
+=\displaystyle\int\limits_{0}^{t}
+\begin{bmatrix}
+    e^{2(t-s)}+(t-s)e^{2(t-s)} & -(t-s)e^{2(t-s)}\\
+    (t-s)e^{2(t-s)} & e^{2(t-s)}-(t-s)e^{2(t-s)}
+\end{bmatrix}
+\begin{bmatrix}
+    s\\
+    s^2
+\end{bmatrix}
+\mathrm{d}s
+$$
+$$=
+\begin{bmatrix}
+    \frac{1}{8}(-2t^2-6t+3e^{2t}-3)\\
+    \\
+    \frac{3}{8}(-2t^2-2t+e^{2t}-1)
+\end{bmatrix}
+$$
+Vậy nghiệm của phương trình đã cho là:
+$$x=x_c+x_p
+\begin{bmatrix}
+    -t.e^{2t}+3e^{2t}+\frac{1}{8}(-2t^2-6t+3e^{2t}-3)\\
+    \\
+    -te^{2t}+4e^{2t}+\frac{3}{8}(-2t^2-2t+e^{2t}-1)
+\end{bmatrix}
+$$
+\textbf{Hay:}\\
+\hspace*{3cm}$R=-t.e^{2t}+3e^{2t}+\frac{1}{8}(-2t^2-6t+3e^{2t}-3)$\\\\
+\hspace*{3cm}$J=-te^{2t}+4e^{2t}+\frac{3}{8}(-2t^2-2t+e^{2t}-1)$\\\\
+\textbf{Ví dụ 3:} Tìm nghiệm của hệ phương trình sau:
+\begin{align*}
+    \begin{cases}
+        R'=J+t-1\\
+        J'=-R+t^2\\
+        R(0)=1, J(0)=2
+    \end{cases}
+\end{align*}
+\centerline{\textbf{Giải}}
+Biểu diễn hệ phương trình trên lại dưới dạng:
+\begin{align*}
+    \begin{cases}
+        x'=
+        \begin{bmatrix}
+        0 & 1\\
+        -1 & 0
+        \end{bmatrix}
+        x+
+        \begin{bmatrix}
+        t-1\\
+        t^2
+        \end{bmatrix}\\
+        x(0)=\begin{bmatrix}
+        -1\\
+        2
+        \end{bmatrix}
+    \end{cases}
+\end{align*}
+\hspace{0.3cm}Với $x=
+\begin{bmatrix}
+    R\\
+    J
+\end{bmatrix}$\\
+Xét ma trận $A=
+\begin{bmatrix}
+    0&1\\
+    -1&0
+\end{bmatrix}.
+$
+ Phương trình đặc trưng $det(A- \lambda I)=0$ có nghiệm phức với phần thực bằng 0 $\lambda_1=i$; $\lambda_2=-i$.\\
+Để tìm hàm mũ của ma trận A. Ta sẽ tính dãy $a_k$ và $B_k$ (với k=1,2):\\
+Dãy $a_k$:
+\begin{align*}
+    \begin{cases}
+        a_1=e^{it}\\
+        a_2=\displaystyle\int\limits_{0}^{t} \mathrm{e}^{-i(t-u)}.\mathrm{e}^{iu}\mathrm{d}u=e^{-it}\displaystyle\int\limits_{0}^{t}\mathrm{e}^{2iu}\mathrm{d}u=\frac{i}{2}(e^{-it}-e^{it})
+    \end{cases}
+\end{align*}
+Áp dụng công thức euler: $e^{ix}=cos(x)+i.sin(x)$. Ta viết lại dãy $a_k$:
+\begin{align*}
+    \begin{cases}
+        a_1=cos(t)+i.sin(t)\\
+        a_2=\frac{i}{2}(cos(t)-i.sin(t)-cos(t)-i.sin(t))=sin(t)
+    \end{cases}
+\end{align*}
+Dãy $B_k$:
+\begin{align*}
+    \begin{cases}
+        B_1=I\\
+        B_2=(A-iI)I=A-iI=
+        \begin{bmatrix}
+            -i & 1\\
+            -1 & -i
+        \end{bmatrix}
+    \end{cases}
+\end{align*}
+Suy ra hàm mũ của A:
+$$e^{At}=a_1.B_1+a_2.B_2=
+\begin{bmatrix}
+    cos(t) & sin(t)\\
+    -sin(t) & cos(t)
+\end{bmatrix}
+$$
+Suy ra nghiệm của hệ phương trình thuần nhất:
+$$x_c=e^{At}.x_0=
+\begin{bmatrix}
+    2sin(t)-cos(t)\\
+    sin(t)+2cos(t)
+\end{bmatrix}
+$$
+Nghiệm riêng của hệ phương trình đã cho:
+$$
+    x_p=\displaystyle\int\limits_{0}^{t} \mathrm{e}^{A(t-s)}.
+    \begin{bmatrix}
+    s-1\\
+    s^2
+\end{bmatrix}
+    \mathrm{d}s
+=\displaystyle\int\limits_{0}^{t}
+\begin{bmatrix}
+    cos(t-s) & sin(t-s)\\
+    -sin(t-s) & cos(t-s)
+\end{bmatrix}
+\begin{bmatrix}
+    s-1\\
+    s^2
+\end{bmatrix}
+\mathrm{d}s
+$$
+$$=
+\begin{bmatrix}
+    t^2-sin(t)+cos(t)-1\\
+    t-sin(t)-cos(t)+1
+\end{bmatrix}
+$$
+Suy ra nghiệm duy nhất của hệ phương trình đã cho:
+$$x=x_p+x_c=
+\begin{bmatrix}
+    sin(t)+t^2-1\\
+    cos(t)+t+1
+\end{bmatrix}
+$$
+\textbf{Hay:}\\
+\hspace*{5cm}$R=sin(t)+t^2-1$\\\\
+\hspace*{5cm}$J=cos(t)+t+1$\\\\
+\textbf{Ví dụ 4:} Tìm nghiệm của hệ phương trình sau:
+\begin{align*}
+    \begin{cases}
+        R'=2R - 5J + e^{2t}\\
+        J'=2R - 4J + e^t\\
+        R(0)=1, J(0)=0
+    \end{cases}
+\end{align*}
+\centerline{\textbf{Giải}}
+Biểu diễn hệ phương trình trên lại dưới dạng:
+\begin{align*}
+    \begin{cases}
+        x'=
+        \begin{bmatrix}
+        2 & -5\\
+        2 & -4
+        \end{bmatrix}
+        x+
+        \begin{bmatrix}
+        e^{2t}\\
+        e^t
+        \end{bmatrix}\\
+        x(0)=\begin{bmatrix}
+        1\\
+        0
+        \end{bmatrix}
+    \end{cases}
+\end{align*}
+\hspace{0.3cm}Với $x=
+\begin{bmatrix}
+    R\\
+    J
+\end{bmatrix}$\\
+Xét ma trận $A=
+\begin{bmatrix}
+    2&-5\\
+    2&-4
+\end{bmatrix}.
+$
+ Phương trình đặc trưng $det(A- \lambda I)=0$ có nghiệm phức với phần thực khác 0 $\lambda_1=-1+i$; $\lambda_2=-1-i$.\\
+Để tìm hàm mũ của ma trận A. Ta sẽ tính dãy $a_k$ và $B_k$ (với k=1,2):\\
+Dãy $a_k$:
+\begin{align*}
+    \begin{cases}
+        a_1=e^{(-1-i)t}\\
+        a_2=\displaystyle\int\limits_{0}^{t} \mathrm{e}^{(-1+i)(t-u)}.\mathrm{e}^{(-1-i)u}\mathrm{d}u=e^{(-1+i) t}\displaystyle\int\limits_{0}^{t}\mathrm{e}^{-2iu}\mathrm{d}u=\frac{i}{2}(e^{(-1-i)t}-e^{(-1+i)t})
+    \end{cases}
+\end{align*}
+Áp dụng công thức euler: $e^{ix}=cos(x)+i.sin(x)$. Ta viết lại dãy $a_k$:
+\begin{align*}
+    \begin{cases}
+        a_1=e^{-t}(cos(t)-i.sin(t))\\
+        a_2=e^{-t}sin(t)
+    \end{cases}
+\end{align*}
+Dãy $B_k$:
+\begin{align*}
+    \begin{cases}
+        B_1=I\\
+        B_2=(A-iI)I=A-(-1-i)I=
+        \begin{bmatrix}
+            3+i & -5\\
+            2 & -3+i
+        \end{bmatrix}
+    \end{cases}
+\end{align*}
+Suy ra hàm mũ của A:
+$$e^{At}=a_1.B_1+a_2.B_2=e^{-t}
+\begin{bmatrix}
+    cos(t)+3sin(t) & -5sin(t)\\
+    2sin(t) & cos(t)-3sin(t)
+\end{bmatrix}
+$$
+Suy ra nghiệm của hệ phương trình thuần nhất:
+$$x_c=e^{At}.x_0=e^{-t}
+\begin{bmatrix}
+    cos(t)+3sin(t)\\
+    2sin(t)
+\end{bmatrix}
+$$
+Nghiệm riêng của hệ phương trình đã cho:
+$$
+    x_p=\displaystyle\int\limits_{0}^{t} \mathrm{e}^{A(t-s)}.
+    \begin{bmatrix}
+    e^{2t}\\
+    e^{t}
+\end{bmatrix}
+    \mathrm{d}s
+=\displaystyle\int\limits_{0}^{t}
+e^{-t}
+\begin{bmatrix}
+    cos(t-s)+3sin(t-s) & -5sin(t-s)\\
+    2sin(t-s) & cos(t-s)-3sin(t-s)
+\end{bmatrix}
+\begin{bmatrix}
+    e^{2t}\\
+    e^{t}
+\end{bmatrix}
+\mathrm{d}s
+$$
+$$=
+\begin{bmatrix}
+    \frac{1}{5}(e^{t}(3e^t-5)+6e^{-t}sin(t)+2e^{-t}cos(t)) \\\\
+    \frac{1}{5}(e^{t}(e^t-1)+4e^{-t}sin(t))
+\end{bmatrix}
+$$
+Suy ra nghiệm duy nhất của hệ phương trình đã cho:
+$$x=x_p+x_c=
+\begin{bmatrix}
+    e^{-t}cos(t)+3e^{-t}sin(t)+\frac{1}{5}(e^{t}(3e^t-5)+6e^{-t}sin(t)+2e^{-t}cos(t))\\\\
+    2e^{-t}sin(t)+\frac{1}{5}(e^{t}(e^t-1)+4e^{-t}sin(t))
+\end{bmatrix}
+$$
+\textbf{Hay:}\\
+\hspace*{3cm}$R=e^{-t}cos(t)+3e^{-t}sin(t)+\frac{1}{5}(e^{t}(3e^t-5)+6e^{-t}sin(t)+2e^{-t}cos(t))$\\\\
+\hspace*{3cm}$J=2e^{-t}sin(t)+\frac{1}{5}(e^{t}(e^t-1)+4e^{-t}sin(t))$\\\\
+\textbf{Ví dụ 5:} Tìm nghiệm của hệ phương trình sau:
+\begin{align*}
+    \begin{cases}
+        R'=-3R+4J+e^{2t}+t \\
+        J'=-2R+3J-e^{2t} \\
+        R(0)=-1, J(0)=-2
+    \end{cases}
+\end{align*}
+\centerline{\textbf{Giải}}
+Biểu diễn hệ phương trình trên lại dưới dạng:
+\begin{align*}
+    \begin{cases}
+        x'=
+        \begin{bmatrix}
+        -3 & 4\\
+        -2 & 3
+        \end{bmatrix}
+        x+
+        \begin{bmatrix}
+        e^{2t}\\
+        -e^{2t}
+        \end{bmatrix}
+        +\begin{bmatrix}
+        t\\
+        0
+        \end{bmatrix}
+        \\
+        x(0)=\begin{bmatrix}
+        -1\\
+        -2
+        \end{bmatrix}
+    \end{cases}
+\end{align*}
+\hspace{0.3cm}Với $x=
+\begin{bmatrix}
+    R\\
+    J
+\end{bmatrix}$\\
+Xét ma trận $A=
+\begin{bmatrix}
+    -3&4\\
+    -2&3
+\end{bmatrix}
+$\\
+Làm tương tự ví dụ 1. Suy ra hàm mũ của A:\\
+\hspace*{4cm}$e^{At}=
+\begin{bmatrix}
+    -e^t+2e^{-t} & 2e^t-2e^{-t}\\
+    -e^t+e^{-t} & 2e^t-e^{-t}
+\end{bmatrix}
+$\\
+Gọi $x_c$ là nghiệm của hệ thuần nhất suy ra từ hệ ban đầu.\\
+\hspace*{0.6cm}$x_{p1}$ là nghiệm riêng của hệ 
+\begin{align*}
+    \begin{cases}
+        x'=
+        \begin{bmatrix}
+        -3 & 4\\
+        -2 & 3
+        \end{bmatrix}
+        x+
+        \begin{bmatrix}
+        e^{2t}\\
+        -e^{2t}
+        \end{bmatrix}
+        \\
+        x(0)=\begin{bmatrix}
+        -1\\
+        -2
+        \end{bmatrix}
+    \end{cases}
+\end{align*}
+\\
+\hspace*{0.6cm}$x_{p2}$ là nghiệm riêng của hệ
+\begin{align*}
+    \begin{cases}
+        x'=
+        \begin{bmatrix}
+        -3 & 4\\
+        -2 & 3
+        \end{bmatrix}
+        x
+        +\begin{bmatrix}
+        t\\
+        0
+        \end{bmatrix}
+        \\
+        x(0)=\begin{bmatrix}
+        -1\\
+        -2
+        \end{bmatrix}
+    \end{cases}
+\end{align*}
+Suy ra:\\
+\begin{align*}
+x_c=e^{At}x_0=
+    \begin{bmatrix}
+    -e^t+2e^{-t} & 2e^t-2e^{-t}\\
+    -e^t+e^{-t} & 2e^t-e^{-t}
+\end{bmatrix}
+\begin{bmatrix}
+    -1\\
+    -2
+\end{bmatrix}
+=\begin{bmatrix}
+    -3e^t+2e^{-t}\\
+    -3e^t+e^{-t}
+\end{bmatrix}
+\end{align*}
+\begin{align*}
+    x_{p1}=\displaystyle\int\limits_{0}^{t} \mathrm{e}^{A(t-s)}.
+    \begin{bmatrix}
+        e^{2s}\\
+        -e^{2s}
+        \end{bmatrix}
+    \mathrm{d}s
+=\displaystyle\int\limits_{0}^{t}
+\begin{bmatrix}
+    -e^{t-s}+2e^{-(t-s)} & 2e^{t-s}-2e^{-(t-s)}\\
+    -e^{t-s}+e^{-(t-s)} & 2e^{t-s}-e^{-(t-s)}
+\end{bmatrix}
+\begin{bmatrix}
+        e^{2s}\\
+        -e^{2s}
+        \end{bmatrix}
+\mathrm{d}s
+\end{align*}
+\begin{align*}
+    =\begin{bmatrix}
+    -\frac{4}{3}e^{-t}+3e^t-\frac{5}{3}e^{2t}\\
+    -\frac{2}{3}e^{-t}+3e^t-\frac{7}{3}e^{2t}
+\end{bmatrix}
+\end{align*}
+\begin{align*}
+    x_{p2}=\displaystyle\int\limits_{0}^{t} \mathrm{e}^{A(t-s)}.
+    \begin{bmatrix}
+        s\\
+        0
+        \end{bmatrix}
+    \mathrm{d}s
+=\displaystyle\int\limits_{0}^{t}
+\begin{bmatrix}
+    -e^{t-s}+2e^{-(t-s)} & 2e^{t-s}-2e^{-(t-s)}\\
+    -e^{t-s}+e^{-(t-s)} & 2e^{t-s}-e^{-(t-s)}
+\end{bmatrix}
+\begin{bmatrix}
+        s\\
+        0
+        \end{bmatrix}
+\mathrm{d}s
+\end{align*}
+\begin{align*}
+    =\begin{bmatrix}
+    3t+2e^{-t}-e^t-1 \\
+    2t+e^{-t}-e^t
+\end{bmatrix}
+\end{align*}
+Theo tính chất 2 về nghiệm hệ phương trình vi phân tuyến tính không thuần nhất với hệ số hằng. Suy ra nghiệm của hệ phương trình ban đầu:\\
+\begin{align*}
+    x=x_c+x_{p1}+x_{p2}
+=\begin{bmatrix}
+    -\frac{5}{3}e^{2t} -e^t+\frac{8}{3}e^{-t}+3t-1\\\\
+     -\frac{7}{3}e^{2t} -e^t+\frac{4}{3}e^{-t}+2t
+\end{bmatrix}
+\end{align*}
+Vậy hệ phương trình đã cho có nghiệm duy nhất:
+\begin{align*}
+    R= -\frac{5}{3}e^{2t} -e^t+\frac{8}{3}e^{-t}+3t-1\\
+    J= -\frac{7}{3}e^{2t} -e^t+\frac{4}{3}e^{-t}+2t
+\end{align*}
+\subsubsection{Điều kiện tồn tại nghiệm của hệ phương trình vi phân tuyến tính không thuần nhất với hệ số hằng}
+\textbf{Hàm số sơ cấp: } là hàm gồm hằng số, tổ hợp của một số hữu hạn các phép toán số học (+ – × ÷) và các hàm theo biến x gồm:
+\begin{enumerate}
+    \item Lũy thừa của $x$: $x, x^2, x^3$,...
+    \item Căn của $x$: $\sqrt{x}, \sqrt[3]{x}$,...
+    \item Hàm mũ: $e^x$
+    \item Logarit: $log(x)$
+    \item Hàm lượng giác: $sin(x), cos(x),...$
+    \item Hàm lượng giác ngược: $arcsin(x), arccos(x),...$
+    \item Hàm Hyperbolic: $sinh(x),cosh(x),...$
+    \item Tất cả các hàm số được tạo thành bằng cách thay x (trong một hàm số sơ cấp) bởi bất kỳ một hàm số sơ cấp nào khác: $log(sin(x)),...$
+    \item Tất cả các hàm số được tạo thành bằng cách cộng, trừ, nhân hay chia các hàm số sơ cấp trước đó: $2x-sin(x),...$
+\end{enumerate}
+\textbf{Tính chất của hàm số sơ cấp:}
+\begin{enumerate}
+    \item Mọi hàm số sơ cấp đều liên tục trên tập xác định của nó.
+    \item Mọi hàm số sơ cấp đều tồn tại nguyên hàm trên tập xác định của nó.
+\end{enumerate}
+\textbf{Điều kiện tồn tại nghiệm của hệ phương trình vi phân tuyến tính không
+thuần nhất với hệ số hằng: }\\\\
+Trở lại với hệ (15):
+\begin{align*}
+    \begin{cases}
+        R'=aR+bJ+f(t)\\
+        J'=cR+dJ+g(t)\\
+        R(0)=R_0, J(0)=J_0
+    \end{cases}
+\end{align*}
+\textbf{Hệ phương trình vi phân này tồn tại nghiệm khi và chỉ khi:}\\
+
+$f(t)$, $g(t)$ \textbf{liên tục} và \textbf{tồn tại nguyên hàm} trên khoảng xác định.\\\\
+\textbf{Hệ phương trình vi phân này tồn tại nghiệm là hàm sơ cấp khi và chỉ khi:}
+\begin{enumerate}
+    \item $f(t)$, $g(t)$ là \textbf{hàm số sơ cấp}.
+    \item $f(t)$, $g(t)$ có \textbf{nguyên hàm} là \textbf{hàm số sơ cấp}.
+\end{enumerate}
+\vspace{0.7cm}
+\subsubsection*{Ví dụ về các hệ phương trình vi phân tuyến tính không thuần nhất không thể tìm nghiệm chính xác:}
+
+\textbf{Ví dụ 1:} Tìm nghiệm của hệ phương trình sau:
+\begin{align*}
+    \begin{cases}
+        R'=-R+J+\frac{sin(t+1)}{t+1}\\
+        J'=-R+J+t \\
+        R(0)=R0, J(0)=J0
+    \end{cases}
+\end{align*}
+\centerline{\textbf{Giải}}\\
+Ở phương trình thứ nhất, ta thấy $\frac{sin(t+1)}{t+1}$ có nguyên hàm không là hàm sơ cấp. Lấy nguyên hàm 2 vế theo t ta được:
+$$R=\displaystyle\int\limits-R\mathbf{d}t+\displaystyle\int\limits J\mathbf{d}t+\displaystyle\int\limits \frac{sin(t+1)}{t+1}\mathbf{d}t$$
+\textbf{Nhận xét:} Ta không thể tìm được $\displaystyle\int\limits\frac{sin(t+1)}{t+1}\mathbf{d}t$ theo hàm số sơ cấp. Suy ra $R$ là hàm không sơ cấp.\\
+Vậy suy ra hệ đã cho tồn tại nghiệm không phải là hàm sơ cấp..\\
+
+\textbf{Ví dụ 2:} Tìm nghiệm của hệ phương trình sau:
+\begin{align*}
+    \begin{cases}
+        R'=2R+J+t\\
+        J'=R+J+e^{\frac{1}{t}} \\
+        R(0)=R0, J(0)=J0
+    \end{cases}
+\end{align*}
+\centerline{\textbf{Giải}}\\
+Ở phương trình thứ hai, ta thấy $e^{\frac{1}{t}}$ có nguyên hàm không là hàm sơ cấp. Làm như ví dụ 1, suy ra hệ đã cho tồn tại nghiệm không phải là hàm sơ cấp.\\
+
+\textbf{Ví dụ 3:} Tìm nghiệm của hệ phương trình sau:
+\begin{align*}
+    \begin{cases}
+        R'=R+J+e^{-t^2}\\
+        J'=R+J+\frac{e^t}{t} \\
+        R(0)=R0, J(0)=J0
+    \end{cases}
+\end{align*}
+\centerline{\textbf{Giải}}\\
+Ở hệ trên, ta thấy $e^{-t^2}$ và $\frac{e^t}{t}$ đều có nguyên hàm không là hàm sơ cấp. Làm như ví dụ 1, suy ra hệ đã cho tồn tại nghiệm không phải là hàm sơ cấp.\\
+
+\textbf{Ví dụ 4:} Tìm nghiệm của hệ phương trình sau:
+\begin{align*}
+    \begin{cases}
+        R'=R+J+it\\
+        J'=R+J+t^2 \\
+        R(0)=R0, J(0)=J0
+    \end{cases}
+\end{align*}
+\centerline{\textbf{Giải}}\\
+Ở hệ trên, ta thấy $it$ không là hàm sơ cấp và tồn tại nguyên hàm.\\
+Vây hệ đã cho tồn tại nghiệm không phải là hàm sơ cấp.\\
+
+\textbf{Ví dụ 5:} Tìm nghiệm của hệ phương trình sau:
+\begin{align*}
+    \begin{cases}
+        R'=R+J+it^2\\
+        J'=R+J+erf(t) \\
+        R(0)=R0, J(0)=J0
+    \end{cases}
+\end{align*}
+\centerline{\textbf{Giải}}\\
+Ở hệ trên, ta thấy $it^2$ và $erf(t)$ không là hàm sơ cấp và tồn tại nguyên hàm.\\
+Vây hệ đã cho tồn tại nghiệm không phải là hàm sơ cấp.\\
+\subsection{Hệ phương trình vi phân thường cấp 1 tổng quát}
+Xét một hệ phương trình vi phân phức tạp hơn của tình yêu giữa Romeo và Juliet:
+\begin{align}
+    \begin{cases}
+        R'=f(t,R,J)\\
+        J'=g(t,R,J)\\
+        R(0)=R_0, J(0)=J_0
+    \end{cases}
+\end{align}
+
+Trong đó $f$, $g$ là hai hàm phụ thuộc vào $t$, $R$, $J$.\\
+Hệ (23) có dạng hệ phương trình vi phân thường cấp 1 tổng quát.
+\subsubsection{Điều kiện Lipschitz}
+\subsubsection*{Định nghĩa:}
+Hàm F(x,y) được gọi là thỏa mãn điều kiện \textbf{Lipschitz} trên miền D trên mặt phẳng x,y khi tồn tại một số dương K thỏa:
+$$|F(x,y_1)-F(x,y_2)|<K|y_1-y_2|$$
+Với $(x,y_1)$ và $(x,y_2)$ là 2 điểm bất kì thuộc miền D. K được gọi là \textbf{hằng số Lipschitz}.
+\subsubsection*{Ví dụ về điều kiện Lipschitz:}
+\textbf{Ví dụ 1: } Hàm $F(x,y)=4x^2+y^2$ là thỏa điều kiện Lipschitz trên miền $D: |x|\leq 1, |y|\leq 1$\\
+\centerline{\textbf{Chứng minh}}
+Xét $|F(x,y_1)-F(x,y_2)|=|y_1^2-y_2^2|=|(y_1+y_2)(y_1-y_2)|\leq 2(y_1-y_2)$\\
+Vậy hàm $F(x,y)=4x^2+y^2$ là thỏa điều kiện Lipschitz trên miền $D: |x|\leq 1, |y|\leq 1$.\\\\
+\textbf{Ví dụ 2: } Hàm $F(x,y)=4x^2+y^2$ là thỏa điều kiện Lipschitz trên miền $D: |x|\leq 1, y \in R$\\
+\centerline{\textbf{Chứng minh}}
+Xét $|F(x,y_1)-F(x,y_2)|=|y_1^2-y_2^2|=|(y_1+y_2)(y_1-y_2)|$\\
+Nhận xét: Nếu $y_1$, $y_2$ tiến với $\infty$ thì $|F(x,y_1)-F(x,y_2)|$.
+Vậy hàm $F(x,y)=4x^2+y^2$ không là hàm Lipschitz trên miền $D: |x|\leq 1, y \in R$.
+\subsubsection{Điều kiện tồn tại và duy nhất nghiệm}
+Hệ phương trình vi phân (23) tồn tại và duy nhất nghiệm khi và chỉ khi thỏa mãn các điều kiện sau:
+\begin{enumerate}
+    \item Các hàm $f$, $g$ liên tục trong miền $G$ (với $G$ là miền xác định của hệ phương trình vi phân).
+    \item Các hàm $f$, $g$ thỏa mãn điều kiện \textbf{Lipschitz} theo $R$, $J$ trong miền G với cùng hằng số \textbf{Lipschitz} $L>0$.
+\end{enumerate}
+\textbf{Khi đó tồn tại nghiệm duy nhất} \\
+\centerline{$J(t), R(t)$}
+
+thỏa mãn điều kiện ban đầu\\
+\centerline{$J(t_0)=J0, R(t_0)=R0$}
+\subsubsection{Ví dụ về hệ phương trình vi phân thường cấp 1 tổng quát không thể tìm nghiệm chính xác}
+\textbf{Ví dụ 1:} Tìm nghiệm của hệ phương trình:
+\begin{align*}
+    \begin{cases}
+        R'=\sqrt{1-R^2}J\\
+        J'=\sqrt{1-J^2}R \\
+        R(0)=0.2, J(0)=0.3
+    \end{cases}
+\end{align*}
+\centerline{\textbf{Giải}}\\
+Miền G trong hệ trên:
+$$G=\{t \geq 0; -1 \leq R \leq 1; -1 \leq J \leq 1\}$$
+Xét $|F1(R,J_1)-F1(R,J_2)|=|\sqrt{1-R^2}(J_1-J_2)|\leq 1|J_1-J_2|$\\\\
+Do đó $\sqrt{1-R^2}J$ thỏa điều kiện Lipschitz theo $R,J$ trên miền G. Chứng minh tương tự, $\sqrt{1-J^2}R$ cũng thỏa điều kiện Lipschitz theo $R,J$ trên miền G.
+Suy ra hệ đã cho tồn tại nghiệm.\\\\
+\textbf{Ví dụ 2:} Tìm nghiệm của hệ phương trình:
+\begin{align*}
+    \begin{cases}
+        R'=R(1 - J) \\
+        J'=R(1 - J) \\
+        R(0)=2, J(0)=3
+    \end{cases}
+\end{align*}
+\centerline{\textbf{Giải}}\\
+Nhận xét: Miền G trong hệ trên:
+$$G=\{t \geq 0; a \leq R \leq b; c \leq J \leq d\}$$
+Với a,b,c,d là hằng số.\\
+Xét $|F1(R,J_1)-F1(R,J_2)|=|-RJ_1+RJ_2|=|R(J_1-J_2)|$\\\\
+\hspace*{0.7cm}$|F2(R,J_1)-F2(R,J_2)|=|(R-1)J_1-(R-1)J_2|=|(R-1).(J_1-J_2)|$\\\\
+Lại có $R$ bị chặn trên miền xác định. Do đó $R(1 - J)$ và $R(1 - J)$ thỏa điều kiện Lipschitz theo $R,J$ trên miền G. Suy ra hệ đã cho tồn tại nghiệm.\\\\
+\textbf{Ví dụ 3:} Tìm nghiệm của hệ phương trình:
+\begin{align*}
+    \begin{cases}
+        R'=\frac{1}{\sqrt{(R-2)J}} \\
+        J'=\frac{1}{\sqrt{(J-2)R}} \\
+        R(0)=3, J(0)=4
+    \end{cases}
+\end{align*}
+\centerline{\textbf{Giải}}\\
+Nhận xét: $R' > 0$ và $J' > 0$. Suy ra miền G trong hệ trên:
+$$G=\{t \geq 0; R \geq 3; J\geq 4\}$$
+Xét $|F1(R,J_1)-F1(R,J_2)|=|\frac{1}{\sqrt{(R-2)J_1}}-\frac{1}{\sqrt{(R-2)J_2}}|=|\frac{1}{\sqrt{(R-2)J_1J_2}\sqrt{J_1+J_2}}(J_1-J_2)| <1|J_1-J_2|$\\\\
+Do đó $\frac{1}{\sqrt{(R-1)J}}$ thỏa điều kiện Lipschitz theo $R,J$ trên miền G. Chứng minh tương tự, $\frac{1}{\sqrt{(J-1)R}}$ cũng thỏa điều kiện Lipschitz theo $R,J$ trên miền G. Suy ra hệ đã cho tồn tại nghiệm.\\\\
+\textbf{Ví dụ 4:} Tìm nghiệm của hệ phương trình:
+\begin{align*}
+    \begin{cases}
+        R'=\sqrt{R-1}+\frac{1}{RJ} \\
+        J'=\sqrt{J-1}+\frac{1}{RJ} \\
+        R(0)=1, J(0)=2
+    \end{cases}
+\end{align*}
+\centerline{\textbf{Giải}}\\
+Nhận xét: $R' > 0$ và $J' > 0$. Suy ra miền G trong hệ trên:
+$$G=\{t \geq 0; R \geq 1; J \geq 2\}$$
+Xét $|F1(R,J_1)-F(R,J_2)|=|\frac{1}{RJ_1J_2}(J_1-J_2)|<1|J_1-J_2|$\\\\
+Do đó $\sqrt{R-1}+\frac{1}{RJ}$ thỏa điều kiện Lipschitz theo $R,J$ trên miền G. Chứng minh tương tự, $\sqrt{J-1}+\frac{1}{RJ}$ cũng thỏa điều kiện Lipschitz theo $R,J$ trên miền G. Suy ra hệ đã cho tồn tại nghiệm.\\\\
+\textbf{Ví dụ 5:} Tìm nghiệm của hệ phương trình:
+\begin{align*}
+    \begin{cases}
+        R'=R^2J^2 \\
+        J'= \sqrt{16-R^2}+\sqrt{81-J^2} \\
+        R(0)=3, J(0)=5
+    \end{cases}
+\end{align*}
+\centerline{\textbf{Giải}}\\
+Nhận xét: $R' \geq 0$ và $J' \geq 0$. Suy ra miền G trong hệ trên:
+$$G=\{t \geq 0; 3 \leq R \leq 4; 5 \leq J \leq 9\}$$
+Xét $|F1(R,J_1)-F1(R,J_2)|=|R^2(J_1+J_2)(J_1-J_2)| \leq 228|J_1-J_2|$\\\\
+\hspace*{0.7cm}$|F2(R,J_1)-F2(R,J_2)|=|\sqrt{81-J_1^2}-\sqrt{81-J_2^2}|=|\frac{J_1+J_2}{\sqrt{81-J_1^2}+\sqrt{81-J_2^2}}(J_1-J_2)|<2|J_1-J_2|$
+\\\\
+Do đó $R^2J^2$ và $\sqrt{16-R^2}+\sqrt{81-J^2}$ thỏa điều kiện Lipschitz theo $R,J$ trên miền G. Suy ra hệ đã cho tồn tại nghiệm.\\\\
+
